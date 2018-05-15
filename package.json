@@ -1,0 +1,15 @@
+{
+  "name": "susi_twitchbot",
+  "version": "1.0.0",
+  "description": "SUSI.AI Twitchbot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.86.0",
+    "tmi.js": "^1.2.1"
+  }
+}
