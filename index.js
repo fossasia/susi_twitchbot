@@ -1,6 +1,8 @@
 var tmi = require('tmi.js');
 var request = require('request');
+const express = require('express');
 
+const app = express();
 const userChannel = process.env.CHANNEL;
 
 var ans;
@@ -47,4 +49,9 @@ client.on('chat', function(channel, userstate, message, self){
 client.on('connected', function(address, port){
 	//console.log(`Address: ${address}, Port: ${port}`);
 	client.action(userChannel, "Welcome, I'm SUSI.");
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+   console.log(`listening on ${port}`);
 });
