@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.3",
     "request": "^2.86.0",
     "tmi.js": "^1.2.1"
   }
