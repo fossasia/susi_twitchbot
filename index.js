@@ -40,7 +40,12 @@ client.on('chat', function(channel, userstate, message, self){
 
 	request(options1, function(error, response, body) {
 		if (error) throw new Error(error);
-		ans = (JSON.parse(body)).answers[0].actions[0].expression;
+
+		if((JSON.parse(body)).answers[0])
+			ans = (JSON.parse(body)).answers[0].actions[0].expression;
+		else
+			ans = "Sorry, I could not understand what you just said."
+		
 		client.action(userChannel, ans);
 	});
 
