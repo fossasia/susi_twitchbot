@@ -1,9 +1,14 @@
 var tmi = require('tmi.js');
 var request = require('request');
 const express = require('express');
+var http = require('http');
 
 const app = express();
 const userChannel = process.env.CHANNEL;
+
+setInterval(function() {
+		http.get(process.env.HEROKU_URL);
+	}, 600000); //every 10 minutes
 
 var ans;
 
