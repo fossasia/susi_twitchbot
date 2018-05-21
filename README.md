@@ -19,4 +19,4 @@ For now, the default branch is master.
 
 ## License
 
-This project is licensed under the GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1. Please find more info in our [license document](LICENSE.md).
+This project is licensed under the GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1. Please find more info in our [license document](LICENSE).
