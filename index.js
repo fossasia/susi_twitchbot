@@ -10,7 +10,7 @@ setInterval(function() {
 		http.get(process.env.HEROKU_URL);
 	}, 600000); //every 10 minutes
 
-var ans;
+var ans = '';
 
 var options = {
 	options: {
@@ -51,11 +51,31 @@ client.on('chat', function(channel, userstate, message, self){
 			request(options1, function(error, response, body) {
 				if (error) throw new Error(error);
 
-				if((JSON.parse(body)).answers[0])
-					ans = userstate['display-name'] + " " + (JSON.parse(body)).answers[0].actions[0].expression;
-				else
+				if((JSON.parse(body)).answers[0]) {
+					var data = JSON.parse(body);
+					if(data.answers[0].actions[0].type === "table") {
+						ans = userstate['display-name'];
+						let colNames = data.answers[0].actions[0].columns;
+						let lengthOfTable = data.answers[0].metadata.count;
+						if(lengthOfTable > 4) {
+							ans += " Due to message limit, only 4 results are shown:--- ";
+						} else {
+							ans += " Results are shown below:--- ";
+						}
+						for(let i=0; i<((lengthOfTable>4)?4:lengthOfTable); i++) {
+							for(let colNo in colNames) {
+								ans += `${colNames[colNo]} : `;
+								ans += `${data.answers[0].data[i][colNo]}, `;
+							}
+							ans += " | ";
+						}
+					} else {
+						ans = userstate['display-name'] + " " + data.answers[0].actions[0].expression;
+					}
+				} else {
 					ans = userstate['display-name'] + " Sorry, I could not understand what you just said."
-				
+				}
+
 				client.action(userChannel, ans);
 			});
 		}
