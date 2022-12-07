@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.18.2",
     "http": "0.0.0",
     "request": "^2.86.0",
     "tmi.js": "^1.2.1"
